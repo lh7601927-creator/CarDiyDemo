@@ -4,44 +4,6 @@ import { Stage, PresentationControls, RoundedBox } from '@react-three/drei';
 import { CarConfig } from '../types';
 import { Zap, Palette } from 'lucide-react';
 
-// Extend JSX.IntrinsicElements to include Three.js primitives
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      group: any;
-      mesh: any;
-      meshPhysicalMaterial: any;
-      meshStandardMaterial: any;
-      boxGeometry: any;
-      cylinderGeometry: any;
-      torusGeometry: any;
-      circleGeometry: any;
-      ambientLight: any;
-      spotLight: any;
-      pointLight: any;
-    }
-  }
-}
-
-// Augment React's JSX namespace
-declare module 'react' {
-  namespace JSX {
-    interface IntrinsicElements {
-      group: any;
-      mesh: any;
-      meshPhysicalMaterial: any;
-      meshStandardMaterial: any;
-      boxGeometry: any;
-      cylinderGeometry: any;
-      torusGeometry: any;
-      circleGeometry: any;
-      ambientLight: any;
-      spotLight: any;
-      pointLight: any;
-    }
-  }
-}
-
 interface CarVisualizerProps {
   config: CarConfig;
   setConfig: (config: CarConfig) => void;
