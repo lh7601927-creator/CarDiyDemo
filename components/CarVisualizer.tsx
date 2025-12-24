@@ -40,8 +40,8 @@ const Wheel = ({ position, isLeft, config }: { position: [number, number, number
                     </mesh>
 
                     <group position={[0, 0.02, 0]} rotation={[Math.PI/2, 0, 0]}>
-                        <mesh position={[0, 0, -0.01]}>
-                             <cylinderGeometry args={[0.08, 0.08, 0.04, 24]} rotation={[Math.PI/2, 0, 0]} />
+                        <mesh position={[0, 0, -0.01]} rotation={[Math.PI/2, 0, 0]}>
+                             <cylinderGeometry args={[0.08, 0.08, 0.04, 24]} />
                              <meshStandardMaterial color={rimColor} metalness={0.7} roughness={0.2} />
                         </mesh>
 
@@ -102,7 +102,7 @@ const CarModel = ({ config }: { config: CarConfig }) => {
             <RoundedBox 
                 args={[width, chassisHeight, length]} 
                 radius={0.15} 
-                smooth={4} 
+                smoothness={4} 
                 position={[0, chassisHeight / 2 + 0.2, 0]} 
                 castShadow 
                 receiveShadow
@@ -120,7 +120,7 @@ const CarModel = ({ config }: { config: CarConfig }) => {
             <RoundedBox 
                 args={[width * 0.85, cabinHeight, length * 0.6]} 
                 radius={0.25} 
-                smooth={4} 
+                smoothness={4} 
                 position={[0, chassisHeight + cabinHeight / 2 + 0.1, -0.2]}
             >
                 <meshStandardMaterial color="#050505" metalness={0.9} roughness={0.0} />
@@ -220,7 +220,7 @@ export const CarVisualizer: React.FC<CarVisualizerProps> = ({ config, setConfig,
                 azimuth={[-Math.PI / 4, Math.PI / 4]}
             >
                 {/* environment={null} prevents external HDR fetch which causes errors */}
-                <Stage environment={null} intensity={2} contactShadow={{ resolution: 1024, scale: 20, blur: 2, opacity: 0.4, color: '#000000' }}>
+                <Stage environment={null} intensity={2} shadows="contact">
                      <CarModel config={config} />
                 </Stage>
             </PresentationControls>
